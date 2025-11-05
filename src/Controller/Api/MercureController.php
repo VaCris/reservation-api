@@ -13,7 +13,6 @@ use Lcobucci\JWT\Signer\Key\InMemory;
 class MercureController extends AbstractController
 {
     /**
-     * Obtener token de suscripción a Mercure
      * GET /api/v1/mercure/token
      */
     #[Route('/token', name: 'token', methods: ['GET'])]

@@ -17,7 +17,6 @@ class StatsController extends AbstractController
     }
 
     /**
-     * Dashboard general con todas las estadísticas
      * GET /api/v1/stats/dashboard
      */
     #[Route('/dashboard', name: 'dashboard', methods: ['GET'])]
@@ -35,7 +34,6 @@ class StatsController extends AbstractController
     }
 
     /**
-     * Total de reservas en un período
      * GET /api/v1/stats/total
      */
     #[Route('/total', name: 'total', methods: ['GET'])]
@@ -52,7 +50,6 @@ class StatsController extends AbstractController
     }
 
     /**
-     * Recursos más utilizados
      * GET /api/v1/stats/top-resources
      */
     #[Route('/top-resources', name: 'top_resources', methods: ['GET'])]
@@ -68,7 +65,6 @@ class StatsController extends AbstractController
     }
 
     /**
-     * Usuarios más activos
      * GET /api/v1/stats/top-users
      */
     #[Route('/top-users', name: 'top_users', methods: ['GET'])]
@@ -84,7 +80,6 @@ class StatsController extends AbstractController
     }
 
     /**
-     * Reservas por día
      * GET /api/v1/stats/by-day
      */
     #[Route('/by-day', name: 'by_day', methods: ['GET'])]
@@ -99,7 +94,6 @@ class StatsController extends AbstractController
     }
 
     /**
-     * Horas pico de reservas
      * GET /api/v1/stats/peak-hours
      */
     #[Route('/peak-hours', name: 'peak_hours', methods: ['GET'])]

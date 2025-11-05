@@ -32,7 +32,6 @@ class AuthController extends AbstractController
     }
 
     /**
-     * Login básico para testing
      * POST /api/v1/login
      */
     #[Route('/login', name: 'login', methods: ['POST'])]
@@ -56,8 +55,7 @@ class AuthController extends AbstractController
         ]);
     }
 
-    /**
-     * Obtener información del usuario autenticado
+    /*
      * GET /api/v1/me
      */
     #[Route('/me', name: 'me', methods: ['GET'])]
@@ -82,7 +80,6 @@ class AuthController extends AbstractController
     }
 
     /**
-     * Logout (placeholder)
      * POST /api/v1/logout
      */
     #[Route('/logout', name: 'logout', methods: ['POST'])]

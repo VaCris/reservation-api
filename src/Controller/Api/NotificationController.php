@@ -12,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class NotificationController extends AbstractController
 {
     /**
-     * Obtener mis notificaciones
      * GET /api/v1/notifications
      */
     #[Route('/notifications', name: 'get_notifications', methods: ['GET'])]

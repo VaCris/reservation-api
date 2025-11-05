@@ -5,9 +5,6 @@ namespace App\Strategy;
 use App\Entity\Resource;
 use App\Entity\User;
 
-/**
- * Estrategia de validación común para recursos estándar
- */
 class CommonResourceStrategy implements ValidationStrategyInterface
 {
     public function validate(
@@ -16,21 +13,18 @@ class CommonResourceStrategy implements ValidationStrategyInterface
         \DateTimeImmutable $startTime,
         \DateTimeImmutable $endTime
     ): bool {
-        // Validación 1: El recurso debe estar activo
         if (!$resource->isActive()) {
             throw new \RuntimeException(
                 sprintf('El recurso "%s" no está activo', $resource->getName())
             );
         }
 
-        // Validación 2: La fecha de inicio debe ser anterior a la fecha de fin
         if ($startTime >= $endTime) {
             throw new \RuntimeException(
                 'La fecha de inicio debe ser anterior a la fecha de fin'
             );
         }
 
-        // Validación 3: No se pueden hacer reservas en el pasado
         $now = new \DateTimeImmutable();
         if ($startTime < $now) {
             throw new \RuntimeException(
@@ -38,9 +32,8 @@ class CommonResourceStrategy implements ValidationStrategyInterface
             );
         }
 
-        // Validación 4: La duración mínima es de 15 minutos
         $duration = $endTime->getTimestamp() - $startTime->getTimestamp();
-        if ($duration < 900) { // 15 minutos = 900 segundos
+        if ($duration < 900) { // 15 min
             throw new \RuntimeException(
                 'La duración mínima de una reserva es de 15 minutos'
             );

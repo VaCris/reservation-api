@@ -34,7 +34,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Crear una nueva reserva
      * POST /api/v1/reservations
      */
     #[Route('', name: 'create', methods: ['POST'])]
@@ -88,7 +87,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Listar las reservas del usuario autenticado
      * GET /api/v1/reservations
      */
     #[Route('', name: 'list', methods: ['GET'])]
@@ -112,7 +110,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Obtener una reserva específica
      * GET/api/v1/reservations/{id}
      */
     #[Route('/{id}', name: 'show', methods: ['GET'])]
@@ -145,7 +142,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Cancelar una reserva
      * PUT /api/v1/reservations/{id}/cancel
      */
     #[Route('/{id}/cancel', name: 'cancel', methods: ['PUT'])]
@@ -187,7 +183,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Confirmar una reserva (solo administradores)
      * PUT /api/v1/reservations/{id}/confirm
      */
     #[Route('/{id}/confirm', name: 'confirm', methods: ['PUT'])]
@@ -222,7 +217,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Verificar disponibilidad de un recurso
      * GET /api/v1/reservations/availability/{resourceId}
      */
     #[Route('/availability/{resourceId}', name: 'check_availability', methods: ['GET'])]
@@ -299,7 +293,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Crear reserva recurrente
      * POST /api/v1/reservations/recurring
      */
     #[Route('/recurring', name: 'create_recurring', methods: ['POST'])]
@@ -374,7 +367,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Cancelar todas las instancias de una reserva recurrente
      * DELETE /api/v1/reservations/recurring/{patternId}
      */
     #[Route('/recurring/{patternId}', name: 'cancel_recurring', methods: ['DELETE'])]

@@ -6,9 +6,7 @@ use App\Entity\Reservation;
 use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
 
-/**
- * Servicio para enviar notificaciones en tiempo real vía Mercure
- */
+
 class RealtimeNotificationService
 {
     public function __construct(
@@ -16,9 +14,6 @@ class RealtimeNotificationService
     ) {
     }
 
-    /**
-     * Notificar que se creó una reserva
-     */
     public function notifyReservationCreated(Reservation $reservation): void
     {
         $data = [
@@ -43,9 +38,7 @@ class RealtimeNotificationService
         $this->publish('user/' . $reservation->getUser()->getId(), $data);
     }
 
-    /**
-     * Notificar que se confirmó una reserva
-     */
+
     public function notifyReservationConfirmed(Reservation $reservation): void
     {
         $data = [
@@ -69,9 +62,6 @@ class RealtimeNotificationService
         $this->publish('user/' . $reservation->getUser()->getId(), $data);
     }
 
-    /**
-     * Notificar que se canceló una reserva
-     */
     public function notifyReservationCancelled(Reservation $reservation): void
     {
         $data = [
@@ -92,13 +82,9 @@ class RealtimeNotificationService
         $this->publish('reservations', $data);
         $this->publish('user/' . $reservation->getUser()->getId(), $data);
 
-        // Notificar que el recurso está disponible
         $this->notifyResourceAvailable($reservation->getResource()->getId());
     }
 
-    /**
-     * Notificar que un recurso está disponible
-     */
     public function notifyResourceAvailable(int $resourceId): void
     {
         $data = [
@@ -111,9 +97,6 @@ class RealtimeNotificationService
         $this->publish('resource/' . $resourceId, $data);
     }
 
-    /**
-     * Publicar un mensaje a un topic
-     */
     private function publish(string $topic, array $data): void
     {
         try {

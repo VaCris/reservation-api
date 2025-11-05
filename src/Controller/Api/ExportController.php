@@ -17,7 +17,6 @@ class ExportController extends AbstractController
     }
 
     /**
-     * Exportar reservas a PDF
      * GET /api/v1/export/pdf
      */
     #[Route('/pdf', name: 'pdf', methods: ['GET'])]
@@ -35,7 +34,6 @@ class ExportController extends AbstractController
     }
 
     /**
-     * Exportar reservas a Excel
      * GET /api/v1/export/excel
      */
     #[Route('/excel', name: 'excel', methods: ['GET'])]
@@ -53,7 +51,6 @@ class ExportController extends AbstractController
     }
 
     /**
-     * Exportar reservas a iCalendar
      * GET /api/v1/export/ical
      */
     #[Route('/ical', name: 'ical', methods: ['GET'])]

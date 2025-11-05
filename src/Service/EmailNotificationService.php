@@ -14,13 +14,10 @@ class EmailNotificationService
     public function __construct(
         private MailerInterface $mailer,
         private EntityManagerInterface $entityManager,
-        private string $appName = 'Reservation API'
+        private string $appName = ''
     ) {
     }
 
-    /**
-     * Enviar notificación de reserva creada
-     */
     public function notifyReservationCreated(Reservation $reservation): void
     {
         $user = $reservation->getUser();
@@ -48,9 +45,6 @@ class EmailNotificationService
         );
     }
 
-    /**
-     * Enviar notificación de reserva confirmada
-     */
     public function notifyReservationConfirmed(Reservation $reservation): void
     {
         $user = $reservation->getUser();
@@ -75,9 +69,6 @@ class EmailNotificationService
         );
     }
 
-    /**
-     * Enviar notificación de reserva cancelada
-     */
     public function notifyReservationCancelled(Reservation $reservation): void
     {
         $user = $reservation->getUser();
@@ -101,9 +92,7 @@ class EmailNotificationService
         );
     }
 
-    /**
-     * Enviar email genérico
-     */
+
     private function sendEmail(
         User $user,
         string $subject,
@@ -132,7 +121,6 @@ class EmailNotificationService
 
             $this->mailer->send($email);
 
-            // Marcar como enviado
             $notification->setStatus('sent');
             $notification->setSentAt(new \DateTimeImmutable());
             $this->entityManager->flush();
@@ -148,9 +136,6 @@ class EmailNotificationService
         }
     }
 
-    /**
-     * Renderizar plantilla simple HTML
-     */
     private function renderTemplate(string $template, array $data = []): string
     {
         return match ($template) {
@@ -161,9 +146,6 @@ class EmailNotificationService
         };
     }
 
-    /**
-     * Plantilla: Reserva Creada
-     */
     private function templateReservationCreated(array $data): string
     {
         return <<<HTML
@@ -181,9 +163,6 @@ class EmailNotificationService
         HTML;
     }
 
-    /**
-     * Plantilla: Reserva Confirmada
-     */
     private function templateReservationConfirmed(array $data): string
     {
         return <<<HTML
@@ -219,9 +198,7 @@ class EmailNotificationService
         HTML;
     }
 
-    /**
-     * Envolver contenido con header/footer
-     */
+
     private function wrapTemplate(string $content, string $subject): string
     {
         return <<<HTML

@@ -5,10 +5,6 @@ namespace App\Strategy;
 use App\Entity\Resource;
 use App\Entity\User;
 
-/**
- * Estrategia de validación para recursos de alta seguridad
- * Requiere aprobación previa y horarios restringidos
- */
 class HighSecurityStrategy implements ValidationStrategyInterface
 {
     public function validate(

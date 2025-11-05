@@ -5,9 +5,6 @@ namespace App\Strategy;
 use App\Entity\Resource;
 use App\Entity\User;
 
-/**
- * Estrategia de validación para salas de reuniones
- */
 class MeetingRoomStrategy implements ValidationStrategyInterface
 {
     public function validate(
@@ -20,7 +17,6 @@ class MeetingRoomStrategy implements ValidationStrategyInterface
         $commonStrategy = new CommonResourceStrategy();
         $commonStrategy->validate($user, $resource, $startTime, $endTime);
 
-        // Validación 2: Las reservas deben empezar en intervalos de 30 minutos
         $startMinute = (int) $startTime->format('i');
         if ($startMinute !== 0 && $startMinute !== 30) {
             throw new \RuntimeException(
@@ -28,7 +24,6 @@ class MeetingRoomStrategy implements ValidationStrategyInterface
             );
         }
 
-        // Validación 3: Duración máxima de 4 horas
         $duration = $endTime->getTimestamp() - $startTime->getTimestamp();
         if ($duration > 14400) { // 4 horas
             throw new \RuntimeException(
@@ -36,10 +31,8 @@ class MeetingRoomStrategy implements ValidationStrategyInterface
             );
         }
 
-        // Validación 4: Verificar capacidad del recurso en metadata
         if ($resource->getMetadata() && isset($resource->getMetadata()['min_attendees'])) {
             $minAttendees = $resource->getMetadata()['min_attendees'];
-            // Esta validación se puede extender cuando se agregue campo de asistentes
         }
 
         return true;

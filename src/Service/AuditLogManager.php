@@ -7,9 +7,6 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * Servicio para registrar eventos de auditoría
- */
 class AuditLogManager
 {
     private EntityManagerInterface $entityManager;
@@ -23,9 +20,6 @@ class AuditLogManager
         $this->requestStack = $requestStack;
     }
 
-    /**
-     * Registra una acción en el log de auditoría
-     */
     public function log(
         ?User $user,
         string $action,
@@ -42,7 +36,6 @@ class AuditLogManager
             ->setOldValues($oldValues)
             ->setNewValues($newValues);
 
-        // Capturar información del request si está disponible
         $request = $this->requestStack->getCurrentRequest();
         if ($request !== null) {
             $auditLog->setIpAddress($request->getClientIp())
