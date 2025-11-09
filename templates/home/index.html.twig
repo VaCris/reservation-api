@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: dark;
+        }
+
+        .status {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            margin-bottom: 80px;
+            opacity: 0.9;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 40px;
+            text-align: center;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="status">✅</div>
+    <h1>Reservation API</h1>
+    <p class="message">La API está funcionando correctamente</p>
+
+    <div class="footer">
+        <div class="brand">Studios TKOH!</div>
+        <p class="copyright">&copy; 2025 Studios TKOH! Todos los derechos reservados.</p>
+    </div>
+</body>
+</html>
