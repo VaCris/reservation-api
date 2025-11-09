@@ -54,13 +54,11 @@ class ReportExportService
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Título
         $sheet->setCellValue('A1', 'Reporte de Reservas');
         $sheet->mergeCells('A1:G1');
         $sheet->getStyle('A1')->getFont()->setBold(true)->setSize(16);
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-        // Información de filtros
         $row = 2;
         if (!empty($filters['start_date'])) {
             $sheet->setCellValue('A' . $row, 'Desde: ' . $filters['start_date']);
@@ -72,7 +70,6 @@ class ReportExportService
         }
         $row++;
 
-        // Encabezados
         $headers = ['ID', 'Usuario', 'Recurso', 'Inicio', 'Fin', 'Estado', 'Código'];
         $col = 'A';
         foreach ($headers as $header) {
@@ -85,7 +82,6 @@ class ReportExportService
             $col++;
         }
 
-        // Datos
         $row++;
         foreach ($reservations as $reservation) {
             $sheet->setCellValue('A' . $row, $reservation->getId());
@@ -98,12 +94,10 @@ class ReportExportService
             $row++;
         }
 
-        // Ajustar ancho de columnas
         foreach (range('A', 'G') as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 
-        // Generar archivo
         $writer = new Xlsx($spreadsheet);
         $tempFile = tempnam(sys_get_temp_dir(), 'reservations_');
         $writer->save($tempFile);
