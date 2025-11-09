@@ -23,7 +23,6 @@ class TokenAuthenticator extends AbstractAuthenticator implements Authentication
 
     public function supports(Request $request): ?bool
     {
-        // Solo para rutas /api/* excepto /api/login
         return str_starts_with($request->getPathInfo(), '/api/v1')
             && $request->getPathInfo() !== '/api/v1/login';
     }
@@ -36,10 +35,8 @@ class TokenAuthenticator extends AbstractAuthenticator implements Authentication
             throw new AuthenticationException('Token no proporcionado');
         }
 
-        // Remover "Bearer " del token
         $token = str_replace('Bearer ', '', $token);
 
-        // Decodificar el token (email en base64)
         $email = base64_decode($token);
 
         return new SelfValidatingPassport(
@@ -51,7 +48,6 @@ class TokenAuthenticator extends AbstractAuthenticator implements Authentication
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        // Retornar null para continuar con el request
         return null;
     }
 
