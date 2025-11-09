@@ -12,7 +12,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
 EXPOSE 8080
 CMD ["php", "-S", "0.0.0.0:8080", "-t", "public"]
