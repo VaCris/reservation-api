@@ -11,10 +11,10 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
 RUN mkdir -p var/cache var/log && chmod -R 777 var
 
-RUN php bin/console cache:clear --env=prod || true
+RUN APP_ENV=prod php bin/console cache:clear --no-warmup || true
 
 CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-8080} -t public"]
