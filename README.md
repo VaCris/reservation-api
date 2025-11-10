@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://studios-tkoh.azurewebsites.net/" target="_blank">
+    <img src="https://drive.google.com/uc?export=view&id=1TuT30CiBkinh85WuTvjKGKN47hCyCS0Z" width="300" alt="Studios TKOH Logo">
+  </a>
+</p>
+
+
 # 📅 Reservation API
 
 **API REST de reservas empresariales de nivel de producción** con autenticación JWT, emails transaccionales, notificaciones en tiempo real y exportación de reportes.
@@ -464,4 +471,8 @@ Para problemas o dudas:
 ---
 
 **⭐ Si te fue útil, no olvides dejar una estrella!**
-```
+
+<p align="center">
+  <sub>🛠️ Desarrollado con 💙 por <strong>Studios TKOH</strong></sub><br>
+  <a href="https://studios-tkoh.azurewebsites.net/" target="_blank">🌐 studios-tkoh.azurewebsites.net</a>
+</p>
