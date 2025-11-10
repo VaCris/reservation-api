@@ -1,31 +1,20 @@
 FROM php:8.4-cli
 
-# Instalar extensiones
 RUN apt-get update && apt-get install -y \
-    libpng-dev libjpeg-dev libfreetype6-dev \
-    libzip-dev unzip git curl \
+    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev unzip git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd pdo pdo_mysql zip \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && apt-get clean
 
-# Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Instalar Symfony CLI (opcional)
-RUN curl -sS https://get.symfony.com/cli/installer | bash \
-    && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 WORKDIR /app
 COPY . .
 
-# Instalar dependencias
-RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+RUN composer install --no-dev --optimize-autoloader
 
-# Variables de entorno
-ENV APP_ENV=prod
+RUN mkdir -p var/cache var/log && chmod -R 777 var
 
-# Exponer puerto
-EXPOSE $PORT
+RUN php bin/console cache:clear --env=prod || true
 
-# Usar el puerto de Railway
-CMD php -S 0.0.0.0:${PORT:-8080} -t public
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-8080} -t public"]

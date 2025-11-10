@@ -1,7 +1,7 @@
 [build]
-builder = "nixpacks"
-buildCommand = "composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-gd"
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "php -S 0.0.0.0:$PORT -t public"
 healthcheckPath = "/"
+healthcheckTimeout = 100
