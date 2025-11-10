@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://studios-tkoh.azurewebsites.net/" target="_blank">
+    <img src="https://drive.google.com/uc?export=view&id=1TuT30CiBkinh85WuTvjKGKN47hCyCS0Z" width="300" alt="Studios TKOH Logo">
+  </a>
+</p>
+
+
 # 📅 Reservation API
 
 **API REST de reservas empresariales de nivel de producción** con autenticación JWT, emails transaccionales, notificaciones en tiempo real y exportación de reportes.
@@ -307,7 +314,7 @@ reservation-api/
 
 ```
 
-DATABASE_URL="mysql://user:password@localhost:3306/reservation_db"
+DATABASE_URL="mysql://user:password@localhost:3306/name_db"
 
 JWT_SECRET_KEY="%kernel.project_dir%/config/jwt/private.pem"
 JWT_PUBLIC_KEY="%kernel.project_dir%/config/jwt/public.pem"
@@ -464,4 +471,8 @@ Para problemas o dudas:
 ---
 
 **⭐ Si te fue útil, no olvides dejar una estrella!**
-```
+
+<p align="center">
+  <sub>🛠️ Desarrollado con 💙 por <strong>Studios TKOH</strong></sub><br>
+  <a href="https://studios-tkoh.azurewebsites.net/" target="_blank">🌐 studios-tkoh.azurewebsites.net</a>
+</p>
