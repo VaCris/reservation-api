@@ -307,7 +307,7 @@ reservation-api/
 
 ```
 
-DATABASE_URL="mysql://user:password@localhost:3306/reservation_db"
+DATABASE_URL="mysql://user:password@localhost:3306/name_db"
 
 JWT_SECRET_KEY="%kernel.project_dir%/config/jwt/private.pem"
 JWT_PUBLIC_KEY="%kernel.project_dir%/config/jwt/public.pem"
